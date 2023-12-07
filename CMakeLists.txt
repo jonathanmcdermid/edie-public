@@ -138,6 +138,14 @@ add_subdirectory(src/decoders/common/test)
 add_subdirectory(src/decoders/novatel/test)
 add_subdirectory(src/hw_interface/stream_interface/test)
 
+add_subdirectory(examples/novatel/command_encoding)
+add_subdirectory(examples/novatel/converter_fileparser)
+add_subdirectory(examples/novatel/converter_components)
+add_subdirectory(examples/novatel/converter_parser)
+add_subdirectory(examples/novatel/json_parser)
+add_subdirectory(examples/novatel/rangecmp)
+add_subdirectory(examples/novatel/rxconfig)
+
 # This is an archive Static build(after combining stream, common, novatel component into libEDIE.a) in Linux
 # if we do not require it , We can comment this section.
 if(LINUX)
