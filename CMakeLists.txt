@@ -145,6 +145,9 @@ add_subdirectory(examples/novatel/converter_parser)
 add_subdirectory(examples/novatel/json_parser)
 add_subdirectory(examples/novatel/rangecmp)
 add_subdirectory(examples/novatel/rxconfig)
+add_subdirectory(examples/novatel/dynamic_components)
+add_subdirectory(examples/novatel/dynamic_fileparser)
+add_subdirectory(examples/novatel/dynamic_parser)
 
 # This is an archive Static build(after combining stream, common, novatel component into libEDIE.a) in Linux
 # if we do not require it , We can comment this section.
