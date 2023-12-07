@@ -149,6 +149,6 @@ add_subdirectory(examples/novatel/rxconfig)
 # This is an archive Static build(after combining stream, common, novatel component into libEDIE.a) in Linux
 # if we do not require it , We can comment this section.
 if(LINUX)
-    add_custom_target(${PROJECT_NAME} ALL COMMAND ${CMAKE_AR} rc libEDIE.a $<TARGET_FILE:stream_interface> $<TARGET_FILE:common> $<TARGET_FILE:novatel> $<TARGET_FILE:pimtp>)
+    add_custom_target(${PROJECT_NAME} ALL COMMAND ${CMAKE_AR} rc libEDIE.a $<TARGET_FILE:stream_interface> $<TARGET_FILE:common> $<TARGET_FILE:novatel>)
     install(FILES ${CMAKE_BINARY_DIR}/libEDIE.a DESTINATION lib)
 endif()
