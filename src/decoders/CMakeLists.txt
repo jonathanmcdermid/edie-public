@@ -3,4 +3,3 @@ project(Decoders VERSION 1.0.0)
 
 add_subdirectory(common)
 add_subdirectory(novatel)
-add_subdirectory(dynamic_library)
