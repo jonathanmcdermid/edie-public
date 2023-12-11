@@ -67,7 +67,7 @@ if(CMAKE_C_COMPILER_ID STREQUAL "MSVC")
    message("CMAKE_GENERATOR_TOOLSET: "  ${CMAKE_GENERATOR_TOOLSET})
 
 elseif(CMAKE_C_COMPILER_ID STREQUAL "GNU")
-    set(COMMON_GCC_CXX_FLAGS "-Wall -fPIC -Wfatal-errors -Werror -Wold-style-cast -Wextra -pedantic -Wno-format-truncation -Wno-format=")
+    set(COMMON_GCC_CXX_FLAGS "-Wall -fPIC -Wfatal-errors -Werror -Wold-style-cast -Wextra -pedantic -Wno-format-truncation -Wno-error=format")
     set(COMMON_GCC_FLAGS_DEBUG "-g")
     set(COMMON_GCC_FLAGS_RELEASE "-O3 -DNDEBUG -s")
 
