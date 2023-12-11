@@ -67,7 +67,7 @@ if(CMAKE_C_COMPILER_ID STREQUAL "MSVC")
    message("CMAKE_GENERATOR_TOOLSET: "  ${CMAKE_GENERATOR_TOOLSET})
 
 else()
-    set(COMMON_GCC_CXX_FLAGS "-Wall -Wfatal-errors -Werror -Wold-style-cast -Wextra -pedantic -Wno-unqualified-std-cast-call -Wno-unused-lambda-capture -Wno-format")
+    set(COMMON_GCC_CXX_FLAGS "-Wall -Wfatal-errors -Werror -Wold-style-cast -Wextra -pedantic -Wno-unqualified-std-cast-call -Wno-unused-lambda-capture -Wno-format -Wno-language-extension-token")
     set(COMMON_GCC_FLAGS_DEBUG "-g")
     set(COMMON_GCC_FLAGS_RELEASE "-O3 -DNDEBUG")
 
