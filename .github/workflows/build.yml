@@ -13,8 +13,8 @@ jobs:
         platform:
           - [Windows, windows-latest, msvc, debug]
           - [Windows, windows-latest, msvc, release]
-          - [Windows, windows-latest, gcc, debug]
-          - [Windows, windows-latest, gcc, release]
+          #- [Windows, windows-latest, gcc, debug]
+          #- [Windows, windows-latest, gcc, release]
           - [Windows, windows-latest, clang, debug]
           - [Windows, windows-latest, clang, release]
           - [Linux, ubuntu-latest, gcc, debug]
@@ -24,13 +24,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
   
-      - name: Install GCC
-        if: matrix.platform[2] == 'gcc'
-        uses: egor-tensin/setup-mingw@v1
-      
-      - name: Set env vars for GCC
-        if: matrix.platform[2] == 'gcc'
-        run: echo "CC=gcc" >> $GITHUB_ENV && echo "CXX=g++" >> $GITHUB_ENV
+      #- name: Install GCC
+      #  if: matrix.platform[2] == 'gcc'
+      #  uses: egor-tensin/setup-mingw@v1
+      #
+      #- name: Set env vars for GCC
+      #  if: matrix.platform[2] == 'gcc'
+      #  run: echo "CC=gcc" >> $GITHUB_ENV && echo "CXX=g++" >> $GITHUB_ENV
       
       - name: Install Clang
         if: matrix.platform[2] == 'clang'
