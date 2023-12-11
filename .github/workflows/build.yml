@@ -26,7 +26,7 @@ jobs:
   
       - name: Install GCC
         if: matrix.platform[2] == 'gcc'
-        uses: egor-tensin/setup-gcc@v1
+        uses: egor-tensin/setup-mingw@v1
       
       - name: Set env vars for GCC
         if: matrix.platform[2] == 'gcc'
