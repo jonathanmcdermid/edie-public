@@ -19,7 +19,7 @@ jobs:
         uses: microsoft/setup-msbuild@v1
 
       - name: Set up CMake
-        uses: microsoft/setup-cmake@v1
+        uses: cmake/setup-cmake@v1
 
       - name: Build on Windows
         run: |
