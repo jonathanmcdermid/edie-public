@@ -6,7 +6,7 @@ on:
 
 jobs:
   build-all:
-    name: CMake - ${{ matrix.platform[0] }} - ${{ matrix.platform[2] }}
+    name: CMake - ${{ matrix.platform[0] }} - ${{ matrix.platform[2] }} - ${{ matrix.platform[3] }}
     runs-on: ${{ matrix.platform[1] }}
     strategy:
       matrix:
@@ -24,9 +24,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
   
-      - name: Install MinGW-w64
+      - name: Install GCC
         if: matrix.platform[2] == 'gcc'
-        uses: mattn/mingw-action@v2
+        uses: egor-tensin/setup-gcc@v1
       
       - name: Set env vars for GCC
         if: matrix.platform[2] == 'gcc'
