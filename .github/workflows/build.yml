@@ -51,10 +51,10 @@ jobs:
       - name: Build
         run: cmake --build build --parallel --config ${{ matrix.platform[3] }}
 
-      - name: Upload Windows Artifacts
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: windows-artifacts
+          name: artifacts
           path: |
             build/**/**/**/test/${{ matrix.platform[3] }}/*.exe
             build/lib/**/*.so*
