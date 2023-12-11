@@ -26,7 +26,7 @@ jobs:
           mkdir build
           cd build
           echo "Starting build for Windows ${{ matrix.arch }}-${{ matrix.build_type }}"
-          cmake .. -G "Visual Studio 16 2019" -A "${{ matrix.arch }}" -DARCH="${{ matrix.arch }}" -DCMAKE_BUILD_TYPE="${{ matrix.build_type }}" -DCMAKE_LIB_SHARED:BOOL=ON -DGIT_BRANCH="${{ github.event.client_payload.pull_request.head.repo.default_branch }}"
+          cmake .. -G Ninja -A "${{ matrix.arch }}" -DARCH="${{ matrix.arch }}" -DCMAKE_BUILD_TYPE="${{ matrix.build_type }}" -DCMAKE_LIB_SHARED:BOOL=ON -DGIT_BRANCH="${{ github.event.client_payload.pull_request.head.repo.default_branch }}"
           cmake --build . --config "${{ matrix.build_type }}"
           echo "Build for Windows ${{ matrix.arch }}-${{ matrix.build_type }} done!"
 
