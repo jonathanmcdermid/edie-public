@@ -69,7 +69,7 @@ if(CMAKE_C_COMPILER_ID STREQUAL "MSVC")
 else()
     set(COMMON_GCC_CXX_FLAGS "-Wall -Wfatal-errors -Werror -Wold-style-cast -Wextra -pedantic -Wno-format-truncation -Wno-unqualified-std-cast-call -Wno-unused-lambda-capture -Wno-format")
     set(COMMON_GCC_FLAGS_DEBUG "-g")
-    set(COMMON_GCC_FLAGS_RELEASE "-O3 -DNDEBUG -s")
+    set(COMMON_GCC_FLAGS_RELEASE "-O3 -DNDEBUG")
 
     if(LINUX)
         set(COMMON_GCC_CXX_FLAGS "${COMMON_GCC_CXX_FLAGS} -D_LINUX_ -fPIC")
