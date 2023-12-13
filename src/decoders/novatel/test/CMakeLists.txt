@@ -8,7 +8,7 @@ LIST(APPEND NOVATELTEST_SOURCES ${SOURCES})
 
 add_executable(${PROJECT_NAME} ${NOVATELTEST_SOURCES})
 
-add_test(${PROJECT_NAME} COMMAND ${PROJECT_NAME})
+add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME} ${CMAKE_SOURCE_DIR})
 set_property(TARGET ${PROJECT_NAME} PROPERTY FOLDER "decoders/tests")
 
 include_directories(${CMAKE_SOURCE_DIR}/src/decoders/common/api)

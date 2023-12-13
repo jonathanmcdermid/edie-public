@@ -29,6 +29,7 @@
 //-----------------------------------------------------------------------
 // Includes
 //-----------------------------------------------------------------------
+#include <stdexcept>
 #include <string>
 
 #include "gtest/gtest.h"
@@ -37,21 +38,13 @@ int main(int argc, char** argv)
 {
     testing::InitGoogleTest(&argc, argv);
 
-    if (argc != 3) throw std::invalid_argument("2 arguments required.\nUsage: <db path> <resource path>");
+    if (argc != 2) throw std::invalid_argument("1 argument required.\nUsage: <project root>");
 
-#ifdef _WIN32
-    if (_putenv(("TEST_DB_PATH=" + std::string(argv[1])).c_str()) != 0)
-#else
-    if (setenv("TEST_DB_PATH", argv[1], 1) != 0)
-#endif
-        throw std::runtime_error("Failed to set db path.");
+    std::string strDatabaseVar = "TEST_DATABASE_PATH=" + std::string(argv[1]) + "/database/messages_public.json";
+    std::string strResourceVar = "TEST_RESOURCE_PATH=" + std::string(argv[1]) + "/src/decoders/novatel/test/resources/";
 
-#ifdef _WIN32
-    if (_putenv(("TEST_RESOURCE_PATH=" + std::string(argv[2])).c_str()) != 0)
-#else
-    if (setenv("TEST_RESOURCE_PATH", argv[2], 1) != 0)
-#endif
-        throw std::runtime_error("Failed to set resource path.");
+    if (putenv(const_cast<char*>(strDatabaseVar.c_str())) != 0) throw std::runtime_error("Failed to set db path.");
+    if (putenv(const_cast<char*>(strResourceVar.c_str())) != 0) throw std::runtime_error("Failed to set resource path.");
 
     return RUN_ALL_TESTS();
 }

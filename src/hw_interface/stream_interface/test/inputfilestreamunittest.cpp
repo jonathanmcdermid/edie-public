@@ -29,7 +29,6 @@
 #include <string>
 
 #include "hw_interface/stream_interface/api/inputfilestream.hpp"
-#include "paths.hpp"
 
 #ifndef RESOURCE_DIR
 #define RESOURCE_DIR
@@ -50,7 +49,8 @@ TEST_F(InputFileStreamTest, ReadData)
 {
     ReadDataStructure stReadDataStructure;
     InputFileStream* pMyTestCommand = nullptr;
-    pMyTestCommand = new InputFileStream((std::filesystem::path(*TEST_RESOURCE_PATH) / "streaminterface_testread.asc").string().c_str());
+    pMyTestCommand =
+        new InputFileStream((std::filesystem::path(std::getenv("TEST_RESOURCE_PATH")) / "streaminterface_testread.asc").string().c_str());
     stReadDataStructure.uiDataSize = 20;
     stReadDataStructure.cData = new char[stReadDataStructure.uiDataSize + 1];
     stReadDataStructure.cData[stReadDataStructure.uiDataSize] = 0;
@@ -65,7 +65,7 @@ TEST_F(InputFileStreamTest, ReadDataWideCharPath)
     ReadDataStructure stReadDataStructure;
     InputFileStream* pMyTestCommand = nullptr;
     pMyTestCommand = new InputFileStream(
-        std::u32string(((std::filesystem::path(*TEST_RESOURCE_PATH) / U"inputfilestream不同语言的文件.gps").generic_u32string())));
+        std::u32string(((std::filesystem::path(std::getenv("TEST_RESOURCE_PATH")) / U"inputfilestream不同语言的文件.gps").generic_u32string())));
     stReadDataStructure.uiDataSize = 69;
     stReadDataStructure.cData = new char[stReadDataStructure.uiDataSize + 1];
     stReadDataStructure.cData[stReadDataStructure.uiDataSize] = 0;
@@ -85,7 +85,8 @@ TEST_F(InputFileStreamTest, ReadLine)
     StreamReadStatus stReadStatus;
 
     InputFileStream* pMyTestCommand = nullptr;
-    pMyTestCommand = new InputFileStream((std::filesystem::path(*TEST_RESOURCE_PATH) / "streaminterface_testread.asc").string().c_str());
+    pMyTestCommand =
+        new InputFileStream((std::filesystem::path(std::getenv("TEST_RESOURCE_PATH")) / "streaminterface_testread.asc").string().c_str());
     std::string linestring;
     stReadStatus = pMyTestCommand->ReadLine(linestring);
     ASSERT_STREQ("This is a test file. it will\r", linestring.c_str());
@@ -115,7 +116,8 @@ TEST_F(InputFileStreamTest, Reset)
 {
     ReadDataStructure stReadDataStructure;
     InputFileStream* pMyTestCommand = NULL;
-    pMyTestCommand = new InputFileStream((std::filesystem::path(*TEST_RESOURCE_PATH) / "streaminterface_testread.asc").string().c_str());
+    pMyTestCommand =
+        new InputFileStream((std::filesystem::path(std::getenv("TEST_RESOURCE_PATH")) / "streaminterface_testread.asc").string().c_str());
     stReadDataStructure.uiDataSize = 20;
     stReadDataStructure.cData = new char[stReadDataStructure.uiDataSize + 1];
     stReadDataStructure.cData[stReadDataStructure.uiDataSize] = 0;
@@ -145,7 +147,8 @@ TEST_F(InputFileStreamTest, GetFileExtension)
 {
     InputFileStream* pMyTestCommand = nullptr;
 
-    pMyTestCommand = new InputFileStream((std::filesystem::path(*TEST_RESOURCE_PATH) / "streaminterface_testread.asc").string().c_str());
+    pMyTestCommand =
+        new InputFileStream((std::filesystem::path(std::getenv("TEST_RESOURCE_PATH")) / "streaminterface_testread.asc").string().c_str());
     ASSERT_TRUE("asc" == pMyTestCommand->GetFileExtension());
     delete pMyTestCommand;
 }
@@ -154,7 +157,8 @@ TEST_F(InputFileStreamTest, GetCurrentFileStats)
 {
     ReadDataStructure stReadDataStructure;
     InputFileStream* pMyTestCommand = nullptr;
-    pMyTestCommand = new InputFileStream((std::filesystem::path(*TEST_RESOURCE_PATH) / "streaminterface_testread.asc").string().c_str());
+    pMyTestCommand =
+        new InputFileStream((std::filesystem::path(std::getenv("TEST_RESOURCE_PATH")) / "streaminterface_testread.asc").string().c_str());
     stReadDataStructure.uiDataSize = 20;
     stReadDataStructure.cData = new char[stReadDataStructure.uiDataSize + 1];
     stReadDataStructure.cData[stReadDataStructure.uiDataSize] = 0;

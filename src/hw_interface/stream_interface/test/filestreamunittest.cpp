@@ -35,7 +35,6 @@
 
 #include "decoders/common/api/nexcept.h"
 #include "hw_interface/stream_interface/api/filestream.hpp"
-#include "paths.hpp"
 
 #ifndef RESOURCE_DIR
 #define RESOURCE_DIR
@@ -101,8 +100,8 @@ TEST_F(FileStreamTest, WideCharOpenFile)
     FileStream* pMyTestCommand = nullptr;
     try
     {
-        pMyTestCommand =
-            new FileStream(std::u32string((std::filesystem::path(*TEST_RESOURCE_PATH) / U"filestream不同语言的文件.gps").generic_u32string()));
+        pMyTestCommand = new FileStream(
+            std::u32string((std::filesystem::path(std::getenv("TEST_RESOURCE_PATH")) / U"filestream不同语言的文件.gps").generic_u32string()));
         pMyTestCommand->OpenFile(FileStream::FILEMODES::OUTPUT);
         ASSERT_FALSE(pMyTestCommand->GetMyFileStream()->fail());
         pMyTestCommand->CloseFile();
@@ -140,7 +139,7 @@ TEST_F(FileStreamTest, OpenFile)
     FileStream* pMyTestCommand = nullptr;
     try
     {
-        pMyTestCommand = new FileStream((std::filesystem::path(*TEST_RESOURCE_PATH) / "filestream_file2.asc").string().c_str());
+        pMyTestCommand = new FileStream((std::filesystem::path(std::getenv("TEST_RESOURCE_PATH")) / "filestream_file2.asc").string().c_str());
 
         pMyTestCommand->OpenFile(FileStream::FILEMODES::OUTPUT);
         ASSERT_FALSE(pMyTestCommand->GetMyFileStream()->fail());
@@ -179,7 +178,7 @@ TEST_F(FileStreamTest, Exception)
     FileStream* pMyTestCommand = nullptr;
     try
     {
-        pMyTestCommand = new FileStream((std::filesystem::path(*TEST_RESOURCE_PATH) / "abcd.xyz").string().c_str());
+        pMyTestCommand = new FileStream((std::filesystem::path(std::getenv("TEST_RESOURCE_PATH")) / "abcd.xyz").string().c_str());
 
         pMyTestCommand->CloseFile();
         ASSERT_TRUE(1 == 0); // Should not reach this line
