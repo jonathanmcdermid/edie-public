@@ -51,6 +51,9 @@ jobs:
       - name: Build
         run: cmake --build build --parallel --config ${{ matrix.platform[3] }}
 
+      - name: Test
+        run: ctest --test-dir build --build-config Release
+
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
