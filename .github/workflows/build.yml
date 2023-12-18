@@ -37,6 +37,11 @@ jobs:
       - name: Create default Conan profile
         shell: bash
         run: conan profile detect
+      
+      - name: Set C++ standard in Conan profile
+        run: |
+          echo "[settings]" >> ~/.conan/profiles/default
+          echo "compiler.cppstd=17" >> ~/.conan/profiles/default
 
       - name: Install Conan packages
         run: conan install . -of=lib
