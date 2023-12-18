@@ -4,10 +4,12 @@
 
 /.vs
 /.vscode/
+/lib/
 /build/
 /out/build/
 /src/version.h
 /CMakeSettings.json
+/CMakeUserPresets.json
 **/bin/
 **/venv/
 /.idea
