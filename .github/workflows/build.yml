@@ -15,8 +15,7 @@ jobs:
           - [Linux, ubuntu-latest, gcc]
           - [Linux, ubuntu-latest, clang]
           - [Windows, windows-latest, msvc]
-          - [Windows, windows-latest, gcc]
-          - [Windows, windows-latest, clang]
+          - [MacOS, macos-latest, apple-clang]
     steps:
       - uses: actions/checkout@v3
 
@@ -33,18 +32,20 @@ jobs:
       - name: Install Conan
         id: conan
         uses: turtlebrowser/get-conan@main
+        with:
+          version: '1.61.0'
 
       - name: Create default Conan profile
         shell: bash
-        run: conan profile detect
-      
-      - name: Set C++ standard in Conan profile
         run: |
-          echo "[settings]" >> ~/.conan/profiles/default
-          echo "compiler.cppstd=17" >> ~/.conan/profiles/default
+          conan profile new default
+          conan profile update settings.compiler=clang default
+          conan profile update settings.arch=$(uname -m) default
+          if [[ "$RUNNER_OS" == "macOS" ]]; then sed_i='sed -i ""'; else sed_i='sed -i'; fi
+          $sed_i 's/compiler.cppstd=.*/compiler.cppstd=17/' "$(conan config home)/profiles/default"
 
-      - name: Install Conan packages
-        run: conan install . -of=lib
+      - name: Install Conan packages (use precompiled)
+        run: conan install . -if=lib --build=never
 
   build-all:
     name: CMake - ${{ matrix.platform[0] }} - ${{ matrix.platform[2] }} - ${{ matrix.platform[3] }}

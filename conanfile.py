@@ -5,7 +5,7 @@ from conan.tools.build import check_min_cppstd
 from conan.tools.cmake import CMake, cmake_layout, CMakeToolchain, CMakeDeps
 from conan.tools.files import copy
 
-required_conan_version = ">=2.0"
+required_conan_version = ">=1.61"
 
 class NovatelEdieConan(ConanFile):
     name = "novatel_edie"
@@ -32,7 +32,7 @@ class NovatelEdieConan(ConanFile):
         "build_dynamic_libs": "Build additional C-style *_dynamic_library versions of the libraries",
     }
 
-    exports_sources = ["cmake/*", "database/*", "src/*", "LICENSE", "!doc", "!test", "CMakelists.txt"]
+    exports_sources = ["database/*", "src/*", "LICENSE", "CMakelists.txt"]
 
     def config_options(self):
         if self.settings.os == "Windows":
