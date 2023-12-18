@@ -5,6 +5,42 @@ on:
   pull_request:
 
 jobs:
+  conan:
+    name: Conan - ${{ matrix.platform[0] }} - ${{ matrix.platform[2] }}
+    runs-on: ${{ matrix.platform[1] }}
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+          - [Linux, ubuntu-latest, gcc]
+          - [Linux, ubuntu-latest, clang]
+          - [Windows, windows-latest, msvc]
+          - [Windows, windows-latest, gcc]
+          - [Windows, windows-latest, clang]
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Clang
+        if: matrix.platform[2] == 'clang'
+        uses: KyleMayes/install-llvm-action@v1
+        with:
+          version: "17.0"
+
+      - name: Set env vars for Clang
+        if: matrix.platform[2] == 'clang'
+        run: echo "CC=clang" >> $GITHUB_ENV && echo "CXX=clang++" >> $GITHUB_ENV
+
+      - name: Install Conan
+        id: conan
+        uses: turtlebrowser/get-conan@main
+
+      - name: Create default Conan profile
+        shell: bash
+        run: conan profile detect
+
+      - name: Install Conan packages
+        run: conan install . -of=lib
+
   build-all:
     name: CMake - ${{ matrix.platform[0] }} - ${{ matrix.platform[2] }} - ${{ matrix.platform[3] }}
     runs-on: ${{ matrix.platform[1] }}

@@ -6,4 +6,4 @@ fmt/10.1.1
 gtest/1.13.0
 
 [generators]
-cmake
+CMakeToolchain
