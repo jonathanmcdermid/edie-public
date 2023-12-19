@@ -42,10 +42,10 @@ jobs:
           $sed_i 's/compiler.cppstd=.*/compiler.cppstd=17/' "$(conan config home)/profiles/default"
       
       - name: Build Conan package - static
-        run: conan install . -if=build --profile=default --build=missing
+        run: conan install . -of=build --profile=default --build=missing
       
       - name: Build Conan package - shared
-        run: conan install . -if=build --profile=default --build=missing -o "*/*:shared=True"
+        run: conan install . -of=build --profile=default --build=missing -o "*/*:shared=True"
 
   build-all:
     name: CMake - ${{ matrix.platform[0] }} - ${{ matrix.platform[2] }} - ${{ matrix.platform[3] }}
