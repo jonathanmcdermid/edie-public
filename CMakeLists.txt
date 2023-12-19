@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.14)
 project(EDIE VERSION 3.1.0)
 
+# Add Conan dependencies
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup(TARGETS)
+
 enable_testing()
 
 option(COVERAGE "Coverage" OFF)
@@ -108,10 +112,6 @@ else()
 endif()
 
 set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}")
-
-# Add Conan dependencies
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup(TARGETS)
 
 # Add gtest
 find_package(GTest REQUIRED)
