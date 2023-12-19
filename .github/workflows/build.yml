@@ -35,18 +35,6 @@ jobs:
         with:
           version: '1.61.0'
 
-      - name: Create default Conan profile
-        shell: bash
-        run: |
-          conan profile new default
-          conan profile update settings.compiler=clang default
-          conan profile update settings.arch=$(uname -m) default
-          if [[ "$RUNNER_OS" == "macOS" ]]; then sed_i='sed -i ""'; else sed_i='sed -i'; fi
-          $sed_i 's/compiler.cppstd=.*/compiler.cppstd=17/' "$(conan config home)/profiles/default"
-
-      - name: Install Conan packages (use precompiled)
-        run: conan install . -if=lib --build=never
-
   build-all:
     name: CMake - ${{ matrix.platform[0] }} - ${{ matrix.platform[2] }} - ${{ matrix.platform[3] }}
     runs-on: ${{ matrix.platform[1] }}
