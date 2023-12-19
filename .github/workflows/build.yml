@@ -34,17 +34,18 @@ jobs:
       
       - name: Create default profile
         run: conan profile detect
-
+      
       - name: Set compiler.cppstd to 17
         shell: bash
         run: |
           if [[ "$RUNNER_OS" == "macOS" ]]; then sed_i='sed -i ""'; else sed_i='sed -i'; fi
           $sed_i 's/compiler.cppstd=.*/compiler.cppstd=17/' "$(conan config home)/profiles/default"
+      
       - name: Build Conan package - static
-        run: conan create . --build missing
-
+        run: conan install . -if=build --profile=default --build=missing
+      
       - name: Build Conan package - shared
-        run: conan create . --build missing -o "*/*:shared=True"
+        run: conan install . -if=build --profile=default --build=missing -o "*/*:shared=True"
 
   build-all:
     name: CMake - ${{ matrix.platform[0] }} - ${{ matrix.platform[2] }} - ${{ matrix.platform[3] }}
