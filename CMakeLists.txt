@@ -3,9 +3,6 @@ project(EDIE VERSION 3.1.0)
 
 enable_testing()
 
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup()
-
 option(COVERAGE "Coverage" OFF)
 
 set(CMAKE_VERBOSE_MAKEFILE OFF)
