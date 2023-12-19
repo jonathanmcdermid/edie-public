@@ -1,3 +1,5 @@
+include(cmake/conan.cmake)
+
 cmake_minimum_required(VERSION 3.14)
 project(EDIE VERSION 3.1.0)
 
