@@ -2,4 +2,5 @@
 gtest/1.14.0
 
 [generators]
+CMakeDeps
 CMakeToolchain
