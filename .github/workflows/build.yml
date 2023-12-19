@@ -15,7 +15,6 @@ jobs:
           - [Linux, ubuntu-latest, gcc]
           - [Linux, ubuntu-latest, clang]
           - [Windows, windows-latest, msvc]
-          - [MacOS, macos-latest, apple-clang]
     steps:
       - uses: actions/checkout@v3
 
