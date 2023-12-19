@@ -109,9 +109,12 @@ endif()
 
 set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}")
 
-# build EDIE components
-add_subdirectory(src/decoders)
-add_subdirectory(src/hw_interface)
+# Add Conan dependencies
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup(TARGETS)
+
+# Add gtest
+find_package(GTest REQUIRED)
 
 # Find Git package, if not need to install manually or through .yml file
 find_package(Git)
@@ -128,6 +131,10 @@ if(GIT_EXECUTABLE)
         -D GIT_BRANCH=${GIT_BRANCH}
         -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/GenerateVersionHeader.cmake)
 endif()
+
+# build EDIE components
+add_subdirectory(src/decoders)
+add_subdirectory(src/hw_interface)
 
 add_subdirectory(src/decoders/common/test)
 add_subdirectory(src/decoders/novatel/test)
