@@ -36,7 +36,7 @@ jobs:
         run: conan profile detect
 
       - name: Install Conan dependencies
-        run: conan install . -if=build --profile=default --build=missing
+        run: conan install . -of=build --profile=default --build=missing
 
   build-all:
     name: CMake - ${{ matrix.platform[0] }} - ${{ matrix.platform[2] }} - ${{ matrix.platform[3] }}
