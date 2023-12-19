@@ -53,16 +53,16 @@ jobs:
     strategy:
       matrix:
         platform:
-          - [Windows, windows-latest, msvc, debug]
-          - [Windows, windows-latest, msvc, release]
-          #- [Windows, windows-latest, gcc, debug]
-          #- [Windows, windows-latest, gcc, release]
-          #- [Windows, windows-latest, clang, debug]
-          #- [Windows, windows-latest, clang, release]
-          - [Linux, ubuntu-latest, gcc, debug]
-          - [Linux, ubuntu-latest, gcc, release]
-          #- [Linux, ubuntu-latest, clang, debug]
-          #- [Linux, ubuntu-latest, clang, release]
+          - [Windows, windows-latest, msvc, Debug]
+          - [Windows, windows-latest, msvc, Release]
+          #- [Windows, windows-latest, gcc, Debug]
+          #- [Windows, windows-latest, gcc, Release]
+          #- [Windows, windows-latest, clang, Debug]
+          #- [Windows, windows-latest, clang, Release]
+          - [Linux, ubuntu-latest, gcc, Debug]
+          - [Linux, ubuntu-latest, gcc, Release]
+          #- [Linux, ubuntu-latest, clang, Debug]
+          #- [Linux, ubuntu-latest, clang, Release]
     steps:
       - uses: actions/checkout@v3
   
