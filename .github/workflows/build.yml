@@ -33,7 +33,7 @@ jobs:
         uses: turtlebrowser/get-conan@main
       
       - name: Create default Conan profile
-        run: conan profile new default --detect
+        run: conan profile detect
 
       - name: Install Conan dependencies
         run: conan install . -if=build --profile=default --build=missing
