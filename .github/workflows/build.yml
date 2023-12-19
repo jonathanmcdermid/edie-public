@@ -33,6 +33,12 @@ jobs:
         uses: turtlebrowser/get-conan@main
         with:
           version: '1.61.0'
+      
+      - name: Create default Conan profile
+        run: conan profile new default --detect
+
+      - name: Install Conan dependencies
+        run: conan install . -if=build --profile=default --build=missing
 
   build-all:
     name: CMake - ${{ matrix.platform[0] }} - ${{ matrix.platform[2] }} - ${{ matrix.platform[3] }}
