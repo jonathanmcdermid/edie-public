@@ -1,6 +1,8 @@
 include(cmake/conan.cmake)
 
 cmake_minimum_required(VERSION 3.14)
+cmake_policy(SET CMP0091 NEW)
+
 project(EDIE VERSION 3.1.0)
 
 enable_testing()
@@ -110,6 +112,9 @@ else()
 endif()
 
 set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}")
+
+find_package(nlohmann_json REQUIRED)
+find_package(spdlog REQUIRED)
 
 # Fetch the GoogleTest library
 FetchContent_Declare(
