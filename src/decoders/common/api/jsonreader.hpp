@@ -39,7 +39,7 @@
 #include <filesystem>
 #include <fstream>
 #include <iostream>
-#include <logger/logger.hpp>
+#include "decoders/common/api/logger.hpp"
 #include <map>
 #include <nlohmann/json.hpp>
 #include <string>

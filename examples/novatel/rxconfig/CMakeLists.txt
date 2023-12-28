@@ -13,7 +13,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_B
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}-${ARCH}-${DISTRIB_NAME}>)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY $<1:${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}-${ARCH}-${DISTRIB_NAME}>)
 
-set(PROJECT_LINK_LIBS common novatel stream_interface nlohmann_json spdlog)
+set(PROJECT_LINK_LIBS common novatel stream_interface nlohmann_json spdlog spdlog_setup)
 
 link_directories(
 	${CMAKE_CURRENT_SOURCE_DIR}/../../../bin/${CMAKE_BUILD_TYPE}-${ARCH}-${DISTRIB_NAME}/decoders/common
@@ -33,7 +33,5 @@ include_directories(
 add_executable(${PROJECT_NAME} rxconfig_example.cpp)
 add_dependencies(${PROJECT_NAME} common novatel stream_interface)
 target_link_libraries(${PROJECT_NAME} ${PROJECT_LINK_LIBS} )
-target_link_libraries(${PROJECT_NAME} nlohmann_json::nlohmann_json)
-target_link_libraries(${PROJECT_NAME} spdlog::spdlog)
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY FOLDER "examples")

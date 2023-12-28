@@ -41,7 +41,7 @@
 #include <cassert>
 #include <fstream>
 #include <iostream>
-#include <logger/logger.hpp>
+#include "decoders/common/api/logger.hpp"
 #include <nlohmann/json.hpp>
 #include <sstream>
 #include <string>

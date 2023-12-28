@@ -115,6 +115,7 @@ set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}")
 
 find_package(nlohmann_json REQUIRED)
 find_package(spdlog REQUIRED)
+find_package(spdlog_setup REQUIRED)
 
 # Fetch the GoogleTest library
 FetchContent_Declare(
